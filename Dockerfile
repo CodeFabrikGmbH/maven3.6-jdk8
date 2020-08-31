@@ -14,6 +14,7 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 
 RUN apt-get -yq update && \
     apt-get -yqq install jq && \
+    apt-get install -y --no-install-recommends openjfx && \
     rm -rf /tmp/* /var/cache/apk/*
 
 ENV MAVEN_HOME /usr/share/maven
