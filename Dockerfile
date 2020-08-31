@@ -16,13 +16,6 @@ RUN apt-get -yq update && \
     apt-get -yqq install jq && \
     rm -rf /tmp/* /var/cache/apk/*
 
-RUN mkdir -p ~/.ssh
-RUN chmod 700 ~/.ssh
-COPY id_rsa /root/.ssh/id_rsa
-RUN chmod 600 ~/.ssh/id_rsa
-RUN touch ~/.ssh/known_hosts
-RUN chmod 644 ~/.ssh/known_hosts
-
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
