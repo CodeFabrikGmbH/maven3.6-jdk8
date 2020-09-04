@@ -12,10 +12,12 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
-RUN apt-get -yq update && \
-    apt-get -yqq install jq && \
-    apt-get install -y --no-install-recommends openjfx && \
-    rm -rf /tmp/* /var/cache/apk/*
+RUN apt-get update \
+    && apt-get install -y --allow-unauthenticated --no-install-recommends \
+    jq \
+    openjfx \
+    zip \
+    && rm -rf  /var/lib/apt/lists/*
 
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
